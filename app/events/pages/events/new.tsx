@@ -9,13 +9,31 @@ import DatePicker from "react-datepicker"
 import setHours from "date-fns/setHours"
 import setMinutes from "date-fns/setMinutes"
 import logout from "../../../auth/mutations/logout"
+import { createEventMutation } from "app/events/mutations/createEvent"
 
 const UserInfo = () => {
   const currentUser = useCurrentUser()
   const [logoutMutation] = useMutation(logout)
 
   if (currentUser) {
-    return <div></div>
+    return (
+      <div>
+        <EventForm
+          initialValues={{}}
+          onSubmit={async () => {
+            try {
+              const event = await createEventMutation({
+                data: { name: "fa", start: "fa", end: "end", userId: currentUser.id },
+              })
+              alert("Success!" + JSON.stringify(event.id))
+              // router.push(`/events/${event.id}`)
+            } catch (error) {
+              alert("Error creating event " + JSON.stringify(error, null, 2))
+            }
+          }}
+        />
+      </div>
+    )
   } else {
     return (
       <>
