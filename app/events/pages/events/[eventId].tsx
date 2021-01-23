@@ -1,35 +1,58 @@
-import { Suspense } from "react"
+import React, { Suspense } from "react"
 import Layout from "app/layouts/Layout"
 import { Link, useRouter, useQuery, useParam, BlitzPage, useMutation } from "blitz"
 import getEvent from "app/events/queries/getEvent"
 import deleteEvent from "app/events/mutations/deleteEvent"
+import { useCurrentUser } from "app/hooks/useCurrentUser"
+import { Clock } from "app/components/Clock"
+import { Column } from "../../components/Column"
 
 export const Event = () => {
   const router = useRouter()
   const eventId = useParam("eventId", "number")
   const [event] = useQuery(getEvent, { where: { id: eventId } })
   const [deleteEventMutation] = useMutation(deleteEvent)
+  const currentUser = useCurrentUser()
 
   return (
     <div>
-      <h1>Event {event.id}</h1>
-      <pre>{JSON.stringify(event, null, 2)}</pre>
+      <Clock />
+      <h1>{event.name}</h1>
+      {/*<pre>{JSON.stringify(event.speakers, null, 2)}</pre>*/}
 
-      <Link href={`/events/${event.id}/edit`}>
-        <a>Edit</a>
-      </Link>
+      {Object.values(event.speakers).map((e) => {
+        return (
+          <Link href={`/speakers/${e.id}`}>
+            <p>
+              <Column end={e.end} start={e.start} name={e.name} />
+            </p>
+          </Link>
+        )
+      })}
 
-      <button
-        type="button"
-        onClick={async () => {
-          if (window.confirm("This will be deleted")) {
-            await deleteEventMutation({ where: { id: event.id } })
-            router.push("/events")
-          }
-        }}
-      >
-        Delete
-      </button>
+      {currentUser && (
+        <>
+          {currentUser.id === 1 && (
+            <h2>
+              <Link href={`/events/${event.id}/edit`}>
+                <a>Edit</a>
+              </Link>
+
+              <button
+                type="button"
+                onClick={async () => {
+                  if (window.confirm("This will be deleted")) {
+                    await deleteEventMutation({ where: { id: event.id } })
+                    router.push("/events")
+                  }
+                }}
+              >
+                Delete
+              </button>
+            </h2>
+          )}
+        </>
+      )}
     </div>
   )
 }
