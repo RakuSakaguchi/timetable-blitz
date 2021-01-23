@@ -7,7 +7,7 @@ export default async function getEvents(
   { where, orderBy, skip = 0, take }: GetEventsInput,
   ctx: Ctx
 ) {
-  ctx.session.authorize()
+  // ctx.session.authorize()
 
   const events = await db.event.findMany({
     where,
