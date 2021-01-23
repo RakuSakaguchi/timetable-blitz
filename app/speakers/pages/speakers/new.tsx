@@ -11,18 +11,18 @@ const NewSpeakerPage: BlitzPage = () => {
     <div>
       <h1>Create New Speaker</h1>
 
-      <SpeakerForm
-        initialValues={{}}
-        onSubmit={async () => {
-          try {
-            const speaker = await createSpeakerMutation({ data: { name: "MyName" } })
-            alert("Success!" + JSON.stringify(speaker))
-            router.push(`/speakers/${speaker.id}`)
-          } catch (error) {
-            alert("Error creating speaker " + JSON.stringify(error, null, 2))
-          }
-        }}
-      />
+      {/*<SpeakerForm*/}
+      {/*  initialValues={{}}*/}
+      {/*  onSubmit={async () => {*/}
+      {/*    try {*/}
+      {/*      const speaker = await createSpeakerMutation({ data: { name: "MyName" } })*/}
+      {/*      alert("Success!" + JSON.stringify(speaker))*/}
+      {/*      router.push(`/speakers/${speaker.id}`)*/}
+      {/*    } catch (error) {*/}
+      {/*      alert("Error creating speaker " + JSON.stringify(error, null, 2))*/}
+      {/*    }*/}
+      {/*  }}*/}
+      {/*/>*/}
 
       <p>
         <Link href="/speakers">

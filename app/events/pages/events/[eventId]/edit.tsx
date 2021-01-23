@@ -16,23 +16,23 @@ export const EditEvent = () => {
       <h1>Edit Event {event.id}</h1>
       <pre>{JSON.stringify(event)}</pre>
 
-      <EventForm
-        initialValues={event}
-        onSubmit={async () => {
-          try {
-            const updated = await updateEventMutation({
-              where: { id: event.id },
-              data: { name: "MyNewName" },
-            })
-            await setQueryData(updated)
-            alert("Success!" + JSON.stringify(updated))
-            router.push(`/events/${updated.id}`)
-          } catch (error) {
-            console.log(error)
-            alert("Error editing event " + JSON.stringify(error, null, 2))
-          }
-        }}
-      />
+      {/*<EventForm*/}
+      {/*  initialValues={event}*/}
+      {/*  onSubmit={async () => {*/}
+      {/*    try {*/}
+      {/*      const updated = await updateEventMutation({*/}
+      {/*        where: { id: event.id },*/}
+      {/*        data: { name: "MyNewName" },*/}
+      {/*      })*/}
+      {/*      await setQueryData(updated)*/}
+      {/*      alert("Success!" + JSON.stringify(updated))*/}
+      {/*      router.push(`/events/${updated.id}`)*/}
+      {/*    } catch (error) {*/}
+      {/*      console.log(error)*/}
+      {/*      alert("Error editing event " + JSON.stringify(error, null, 2))*/}
+      {/*    }*/}
+      {/*  }}*/}
+      {/*/>*/}
     </div>
   )
 }

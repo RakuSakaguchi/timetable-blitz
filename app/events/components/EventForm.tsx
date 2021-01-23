@@ -13,8 +13,6 @@ const EventForm = ({ initialValues, onSubmit }: EventFormProps) => {
         onSubmit(event)
       }}
     >
-      <div>Put your form fields here. But for now, just click submit</div>
-      <div>{JSON.stringify(initialValues)}</div>
       <button>Submit</button>
     </form>
   )

@@ -9,11 +9,18 @@ import DatePicker from "react-datepicker"
 import setHours from "date-fns/setHours"
 import setMinutes from "date-fns/setMinutes"
 import logout from "../../../auth/mutations/logout"
+import moment from "moment"
+import db, { Prisma } from "db"
+import createSpeaker from "../../../speakers/mutations/createSpeaker"
 
-const UserInfo = () => {
+const UserInfo = (props) => {
   const currentUser = useCurrentUser()
   const [logoutMutation] = useMutation(logout)
   const [createEventMutation] = useMutation(createEvent)
+  const [createSpeakerMutation] = useMutation(createSpeaker)
+
+  const array: any = []
+  Object.keys(props.speakers).map((key) => array.push(props.speakers[key]))
 
   if (currentUser) {
     return (
@@ -23,10 +30,39 @@ const UserInfo = () => {
           onSubmit={async () => {
             try {
               const event = await createEventMutation({
-                data: { name: "fa", start: "fa", end: "end", userId: currentUser.id },
+                data: {
+                  name: props.name,
+                  start: array[0].start,
+                  end: array[0].end,
+                  place: props.place,
+                  userId: currentUser.id,
+                },
               })
               alert("Success!" + JSON.stringify(event.id))
               // router.push(`/events/${event.id}`)
+
+              try {
+                Object.keys(props.speakers).map(async (key) => {
+                  // array2.push({ ...props.speakers[key], eventId: event.id })
+
+                  const event = await createSpeakerMutation({
+                    data: {
+                      name: props.speakers[key].name,
+                      sub: "",
+                      bio: "",
+                      social: "",
+                      order: 0,
+                      start: "",
+                      end: "",
+                      body: "",
+                      img: "",
+                      userId: 1,
+                    },
+                  })
+                })
+              } catch (error) {
+                alert("Error creating event " + JSON.stringify(error, null, 2))
+              }
             } catch (error) {
               alert("Error creating event " + JSON.stringify(error, null, 2))
             }
@@ -269,7 +305,7 @@ const NewEventPage: BlitzPage = () => {
       </button>
 
       <Suspense fallback="Loading...">
-        <UserInfo />
+        <UserInfo name={name} place={place} speakers={speakers} />
       </Suspense>
     </>
   )

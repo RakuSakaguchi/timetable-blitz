@@ -16,23 +16,23 @@ export const EditSpeaker = () => {
       <h1>Edit Speaker {speaker.id}</h1>
       <pre>{JSON.stringify(speaker)}</pre>
 
-      <SpeakerForm
-        initialValues={speaker}
-        onSubmit={async () => {
-          try {
-            const updated = await updateSpeakerMutation({
-              where: { id: speaker.id },
-              data: { name: "MyNewName" },
-            })
-            await setQueryData(updated)
-            alert("Success!" + JSON.stringify(updated))
-            router.push(`/speakers/${updated.id}`)
-          } catch (error) {
-            console.log(error)
-            alert("Error editing speaker " + JSON.stringify(error, null, 2))
-          }
-        }}
-      />
+      {/*<SpeakerForm*/}
+      {/*  initialValues={speaker}*/}
+      {/*  onSubmit={async () => {*/}
+      {/*    try {*/}
+      {/*      const updated = await updateSpeakerMutation({*/}
+      {/*        where: { id: speaker.id },*/}
+      {/*        data: { name: "MyNewName" },*/}
+      {/*      })*/}
+      {/*      await setQueryData(updated)*/}
+      {/*      alert("Success!" + JSON.stringify(updated))*/}
+      {/*      router.push(`/speakers/${updated.id}`)*/}
+      {/*    } catch (error) {*/}
+      {/*      console.log(error)*/}
+      {/*      alert("Error editing speaker " + JSON.stringify(error, null, 2))*/}
+      {/*    }*/}
+      {/*  }}*/}
+      {/*/>*/}
     </div>
   )
 }
