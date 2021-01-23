@@ -9,11 +9,11 @@ import DatePicker from "react-datepicker"
 import setHours from "date-fns/setHours"
 import setMinutes from "date-fns/setMinutes"
 import logout from "../../../auth/mutations/logout"
-import { createEventMutation } from "app/events/mutations/createEvent"
 
 const UserInfo = () => {
   const currentUser = useCurrentUser()
   const [logoutMutation] = useMutation(logout)
+  const [createEventMutation] = useMutation(createEvent)
 
   if (currentUser) {
     return (
