@@ -1,0 +1,31 @@
+-- CreateTable
+CREATE TABLE "Event" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME NOT NULL,
+    "name" TEXT NOT NULL,
+    "start" TEXT NOT NULL,
+    "end" TEXT NOT NULL,
+    "userId" INTEGER NOT NULL,
+    "eventId" INTEGER,
+    FOREIGN KEY ("eventId") REFERENCES "Event" ("id") ON DELETE SET NULL ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Speaker" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME NOT NULL,
+    "name" TEXT NOT NULL,
+    "sub" TEXT NOT NULL,
+    "bio" TEXT NOT NULL,
+    "social" TEXT NOT NULL,
+    "order" INTEGER NOT NULL,
+    "start" TEXT NOT NULL,
+    "end" TEXT NOT NULL,
+    "body" TEXT NOT NULL,
+    "img" TEXT NOT NULL,
+    "userId" INTEGER NOT NULL,
+    "eventId" INTEGER,
+    FOREIGN KEY ("eventId") REFERENCES "Event" ("id") ON DELETE SET NULL ON UPDATE CASCADE
+);
