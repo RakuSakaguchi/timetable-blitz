@@ -7,7 +7,7 @@ export default async function getSpeakers(
   { where, orderBy, skip = 0, take }: GetSpeakersInput,
   ctx: Ctx
 ) {
-  ctx.session.authorize()
+  // ctx.session.authorize()
 
   const speakers = await db.speaker.findMany({
     where,
