@@ -36,3 +36,31 @@ model Session {
   publicData         String?
   privateData        String?
 }
+
+model Event {
+  id        Int       @default(autoincrement()) @id
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  name      String    
+  speakers  Speaker[] 
+  start     String    
+  end       String    
+  group     Event[]   
+  userId    Int       
+}
+
+model Speaker {
+  id        Int      @default(autoincrement()) @id
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name      String   
+  sub       String   
+  bio       String   
+  social    String   
+  order     Int      
+  start     String   
+  end       String   
+  body      String   
+  img       String   
+  userId    Int      
+}
