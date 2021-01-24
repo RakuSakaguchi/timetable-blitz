@@ -38,7 +38,7 @@ const UserInfo = (props) => {
                   userId: currentUser.id,
                 },
               })
-              alert("Success!" + JSON.stringify(event.id))
+              // alert("Success!" + JSON.stringify(event.id))
               // router.push(`/events/${event.id}`)
 
               try {
@@ -48,18 +48,32 @@ const UserInfo = (props) => {
                   const event = await createSpeakerMutation({
                     data: {
                       name: props.speakers[key].name,
+                      // sub: props.speakers[key].sub,
+                      // bio: props.speakers[key].bio,
+                      // social: props.speakers[key].social,
+                      order: props.speakers[key].order,
+                      start: props.speakers[key].start,
+                      end: props.speakers[key].end,
+                      // body: props.speakers[key].body,
+                      // img: props.speakers[key].img,
+                      userId: currentUser.id,
+                      event: { connect: { id: currentUser.id } },
+
+                      // name: "Prisma Day 2020s",
                       sub: "",
                       bio: "",
                       social: "",
-                      order: 0,
-                      start: "",
-                      end: "",
+                      // order: 0,
+                      // start: "",
+                      // end: "",
                       body: "",
                       img: "",
-                      userId: 1,
+                      // userId: 1,
+                      // event: { connect: { id: 1 } },
                     },
                   })
                 })
+                console.log("ok")
               } catch (error) {
                 alert("Error creating event " + JSON.stringify(error, null, 2))
               }
