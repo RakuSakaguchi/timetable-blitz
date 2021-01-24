@@ -3,6 +3,7 @@ import Layout from "app/layouts/Layout"
 import { Link, usePaginatedQuery, useRouter, BlitzPage } from "blitz"
 import getEvents from "app/events/queries/getEvents"
 import { Box, SimpleGrid, Heading, Center } from "@chakra-ui/react"
+import Header from "app/components/header"
 
 const ITEMS_PER_PAGE = 100
 
@@ -58,6 +59,8 @@ export const EventsList = () => {
 const EventsPage: BlitzPage = () => {
   return (
     <div>
+      <Header />
+
       <p>
         <Link href="/events/new">
           <a>Create Event</a>
