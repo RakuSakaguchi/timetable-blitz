@@ -31,10 +31,14 @@
     ]
   },
   "dependencies": {
+    "@chakra-ui/react": "1.1.2",
+    "@emotion/react": "11.1.4",
+    "@emotion/styled": "11.0.0",
     "@prisma/cli": "~2.14",
     "@prisma/client": "~2.14",
     "blitz": "0.29.3",
     "final-form": "4.20.1",
+    "framer-motion": "3.2.0",
     "react": "0.0.0-experimental-3310209d0",
     "react-datepicker": "3.4.1",
     "react-dom": "0.0.0-experimental-3310209d0",
