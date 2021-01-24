@@ -3,6 +3,7 @@ import Layout from "app/layouts/Layout"
 import { Link, useRouter, useQuery, useParam, BlitzPage, useMutation } from "blitz"
 import getEvent from "app/events/queries/getEvent"
 import deleteEvent from "app/events/mutations/deleteEvent"
+import deleteSpeaker from "app/speakers/mutations/deleteSpeaker"
 import { useCurrentUser } from "app/hooks/useCurrentUser"
 import { Clock } from "app/components/Clock"
 import { Column } from "../../components/Column"
@@ -12,6 +13,7 @@ export const Event = () => {
   const eventId = useParam("eventId", "number")
   const [event] = useQuery(getEvent, { where: { id: eventId } })
   const [deleteEventMutation] = useMutation(deleteEvent)
+  const [deleteSpeakerMutaion] = useMutation(deleteSpeaker)
   const currentUser = useCurrentUser()
 
   return (
@@ -41,8 +43,10 @@ export const Event = () => {
               <button
                 type="button"
                 onClick={async () => {
+                  console.log(event.id)
                   if (window.confirm("This will be deleted")) {
                     await deleteEventMutation({ where: { id: event.id } })
+
                     router.push("/events")
                   }
                 }}

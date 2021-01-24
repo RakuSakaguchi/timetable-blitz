@@ -28,8 +28,9 @@ const UserInfo = (props) => {
         <EventForm
           initialValues={{}}
           onSubmit={async () => {
+            let event
             try {
-              const event = await createEventMutation({
+              event = await createEventMutation({
                 data: {
                   name: props.name,
                   start: array[0].start,
@@ -45,7 +46,8 @@ const UserInfo = (props) => {
                 Object.keys(props.speakers).map(async (key) => {
                   // array2.push({ ...props.speakers[key], eventId: event.id })
 
-                  const event = await createSpeakerMutation({
+                  console.log(props.speakers[key])
+                  await createSpeakerMutation({
                     data: {
                       name: props.speakers[key].name,
                       // sub: props.speakers[key].sub,
@@ -57,7 +59,7 @@ const UserInfo = (props) => {
                       // body: props.speakers[key].body,
                       // img: props.speakers[key].img,
                       userId: currentUser.id,
-                      event: { connect: { id: currentUser.id } },
+                      event: { connect: { id: event.id } },
 
                       // name: "Prisma Day 2020s",
                       sub: "",
