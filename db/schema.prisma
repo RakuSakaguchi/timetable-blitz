@@ -65,4 +65,6 @@ model Speaker {
   body      String
   img       String
   userId    Int
+  event   Event @relation(fields: [eventId], references: [id])
+  eventId Int
 }
