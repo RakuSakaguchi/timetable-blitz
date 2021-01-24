@@ -74,8 +74,8 @@ const ShowEventPage: BlitzPage = () => {
   return (
     <div>
       <p>
-        <Link href="/events">
-          <a>Events</a>
+        <Link href="/">
+          <a>TOP</a>
         </Link>
       </p>
 

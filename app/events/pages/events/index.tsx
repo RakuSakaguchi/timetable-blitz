@@ -2,6 +2,7 @@ import { Suspense } from "react"
 import Layout from "app/layouts/Layout"
 import { Link, usePaginatedQuery, useRouter, BlitzPage } from "blitz"
 import getEvents from "app/events/queries/getEvents"
+import { Box, SimpleGrid, Heading, Center } from "@chakra-ui/react"
 
 const ITEMS_PER_PAGE = 100
 
@@ -19,15 +20,30 @@ export const EventsList = () => {
 
   return (
     <div>
-      <ul>
-        {events.map((event) => (
-          <li key={event.id}>
-            <Link href={`/events/${event.id}`}>
-              <a>{event.name}</a>
+      <SimpleGrid columns={2} spacing={8} mr="15px" ml="15px" mt={"18px"}>
+        {events.map((e) => (
+          <h2 key={e.id}>
+            <Link href={"/events/" + e.id}>
+              <Box
+                borderRadius="md"
+                boxShadow="lg"
+                height="80px"
+                color="white"
+                m={[0, 2, 0, 2]}
+                bgGradient="linear(to-r, gray.800, gray.700)"
+                align="center"
+                position="relative"
+              >
+                <Center color="white" pt="30px">
+                  <Heading as="h1" size="md" letterSpacing={"-0.4px"}>
+                    {e.name}
+                  </Heading>
+                </Center>
+              </Box>
             </Link>
-          </li>
+          </h2>
         ))}
-      </ul>
+      </SimpleGrid>
 
       <button disabled={page === 0} onClick={goToPreviousPage}>
         Previous
