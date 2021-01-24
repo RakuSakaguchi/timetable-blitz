@@ -21,14 +21,9 @@ const Header = (props) => {
       </Flex>
 
       <Flex align="center" mr={5}>
-        <Link href="/NewEvent">
-          <a>new</a>
+        <Link href="/events/new">
+          <a>CreateEvent</a>
         </Link>
-        <Box ml={"15px"}>
-          <Link href="/Edit">
-            <a>edit</a>
-          </Link>
-        </Box>
       </Flex>
     </Flex>
   )
