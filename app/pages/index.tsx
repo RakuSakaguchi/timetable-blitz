@@ -59,13 +59,12 @@ const Home: BlitzPage = () => {
   return (
     <div className="container">
       <main>
-        <Suspense fallback="Loading...">
-          <UserInfo />
-        </Suspense>
-
         <>
           <EventsPage />
         </>
+        <Suspense fallback="Loading...">
+          <UserInfo />
+        </Suspense>
       </main>
     </div>
   )
