@@ -12,6 +12,7 @@ import logout from "../../../auth/mutations/logout"
 import moment from "moment"
 import db, { Prisma } from "db"
 import createSpeaker from "../../../speakers/mutations/createSpeaker"
+import Header from "app/components/header"
 
 const UserInfo = (props) => {
   const currentUser = useCurrentUser()
@@ -122,6 +123,7 @@ const NewEventPage: BlitzPage = () => {
 
   return (
     <>
+      <Header />
       <h2>
         イベント名:{" "}
         <input

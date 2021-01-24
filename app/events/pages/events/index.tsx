@@ -61,12 +61,6 @@ const EventsPage: BlitzPage = () => {
     <div>
       <Header />
 
-      <p>
-        <Link href="/events/new">
-          <a>Create Event</a>
-        </Link>
-      </p>
-
       <Suspense fallback={<div>Loading...</div>}>
         <EventsList />
       </Suspense>
