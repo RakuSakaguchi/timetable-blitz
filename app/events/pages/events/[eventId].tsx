@@ -34,11 +34,11 @@ export const Event = () => {
 
       {Object.values(event.speakers).map((e) => {
         return (
-          <Link href={`/speakers/${e.id}`}>
-            <p>
-              <Column end={e.end} start={e.start} name={e.name} />
-            </p>
-          </Link>
+          // <Link href={`/speakers/${e.id}`}>
+          <p>
+            <Column end={e.end} start={e.start} name={e.name} />
+          </p>
+          // {/*</Link>*/}
         )
       })}
 
