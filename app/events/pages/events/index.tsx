@@ -46,12 +46,12 @@ export const EventsList = () => {
         ))}
       </SimpleGrid>
 
-      <button disabled={page === 0} onClick={goToPreviousPage}>
-        Previous
-      </button>
-      <button disabled={!hasMore} onClick={goToNextPage}>
-        Next
-      </button>
+      {/*<button disabled={page === 0} onClick={goToPreviousPage}>*/}
+      {/*  Previous*/}
+      {/*</button>*/}
+      {/*<button disabled={!hasMore} onClick={goToNextPage}>*/}
+      {/*  Next*/}
+      {/*</button>*/}
     </div>
   )
 }
