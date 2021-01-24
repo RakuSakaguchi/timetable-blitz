@@ -8,6 +8,7 @@ import { useCurrentUser } from "app/hooks/useCurrentUser"
 import { Clock } from "app/components/Clock"
 import { Column } from "../../components/Column"
 import { Box, chakra, Text, Center } from "@chakra-ui/react"
+import Header from "app/components/header"
 
 export const Event = () => {
   const router = useRouter()
@@ -73,11 +74,7 @@ export const Event = () => {
 const ShowEventPage: BlitzPage = () => {
   return (
     <div>
-      <p>
-        <Link href="/">
-          <a>TOP</a>
-        </Link>
-      </p>
+      <Header />
 
       <Suspense fallback={<div>Loading...</div>}>
         <Event />
