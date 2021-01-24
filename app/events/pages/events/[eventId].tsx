@@ -7,6 +7,7 @@ import deleteSpeaker from "app/speakers/mutations/deleteSpeaker"
 import { useCurrentUser } from "app/hooks/useCurrentUser"
 import { Clock } from "app/components/Clock"
 import { Column } from "../../components/Column"
+import { Box } from "@chakra-ui/react"
 
 export const Event = () => {
   const router = useRouter()
@@ -18,7 +19,11 @@ export const Event = () => {
 
   return (
     <div>
-      <Clock />
+      <div className="clc">
+        <Box align="center" ml={"-22px"}>
+          <Clock />
+        </Box>
+      </div>
       <h1>{event.name}</h1>
       {/*<pre>{JSON.stringify(event.speakers, null, 2)}</pre>*/}
 

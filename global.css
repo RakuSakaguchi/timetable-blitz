@@ -1,0 +1,30 @@
+@font-face {
+  /*フォントの名前*/
+  font-family: "DSEG7Modern-Bold";
+  /*フォントファイルへのパス（複数指定の場合、上から順に読み込まれる）*/
+  src: url("public/DSEG7Modern-Bold.woff") format("woff");
+}
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+.clc {
+  font-size: 400%;
+  font-family: "DSEG7Modern-Bold", serif;
+  color: #e85838;
+}
+
+.Countdown-col {
+  font-size: 200%;
+  font-family: "DSEG7Modern-Bold", serif;
+}
+
+.name {
+  font-family: "Roboto", sans-serif;
+  color: #e85838;
+  font-weight: bold;
+  font-size: 40px;
+  font-size-adjust: 1;
+}
+
+.in {
+  color: black;
+}
