@@ -39,7 +39,7 @@
     "blitz": "0.29.3",
     "final-form": "4.20.1",
     "framer-motion": "3.2.0",
-    "react": "0.0.0-experimental-3310209d0",
+    "react": "0.14.0",
     "react-datepicker": "3.4.1",
     "react-dom": "0.0.0-experimental-3310209d0",
     "react-error-boundary": "3.1.0",
